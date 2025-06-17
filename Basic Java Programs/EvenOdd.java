@@ -16,6 +16,10 @@ public class EvenOdd{
             System.out.println(num + " is Odd");
         }
 
+        //In place of If else we can use Ternary operator
+        //String result = (num % 2 == 0)? "Even" : "Odd";
+        //System.out.println("The number is" + result);
+
         sc.close();
     }
 }
