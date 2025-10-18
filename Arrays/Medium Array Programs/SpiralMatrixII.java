@@ -1,0 +1,51 @@
+public class SpiralMatrixII {
+    public static int[][] generateMatrix(int n) {
+        int[][] result = new int[n][n];
+        int num = 1;
+        int top = 0, bottom = n - 1;
+        int left = 0, right = n - 1;
+
+        while (top <= bottom && left <= bottom) {
+            // Move right
+            for (int i = left; i <= right; i++) {
+                result[top][i] = num++;
+            }
+            top++;
+
+            // Move bottom
+            for (int i = top; i <= bottom; i++) {
+                result[i][right] = num++;
+            }
+            right--;
+
+            // Move left
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    result[bottom][i] = num++;
+                }
+                bottom--;
+            }
+
+            // Move top
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result[i][left] = num++;
+                }
+                left++;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int n = 3;
+        int[][] result = generateMatrix(n);
+        for (int[] row : result) {
+            for (int val : row) {
+                System.out.print(val + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
